@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemesh>
-  <mapping path="/*" decorator="/WEB-INF/themes/default/decorator.jsp"/> 
+  <mapping path="/admin/*" decorator="/WEB-INF/themes/default/decorator.jsp"/> 
   <mapping path="*My97DatePicker.htm" exclue="true" />
   <mapping path="*js" exclue="true" />
   
@@ -17,10 +17,10 @@
   <mapping decorator="/default-decorator.html"/>
   -->
   
-  <!-- 对不同的路径，启用不同的装饰器 
-  <mapping path="/admin/*" decorator="/another-decorator.html"/>
-  <mapping path="/*.special.jsp" decorator="/special-decorator.html"/>
+  <!-- 对不同的路径，启用不同的装饰器  
+  <mapping path="/admin/*" decorator="/WEB-INF/jsp/admin/top.jsp""/>
   -->
+  
  
   <!-- 对同一路径，启用多个装饰器 
   <mapping>

@@ -6,14 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.commons.lang.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.WebDataBinder;
@@ -146,9 +144,10 @@ public class UserController {
          
     }
 
-    @RequestMapping(value="/user/{userId}/view", method = {RequestMethod.GET})
-    public String view(@PathVariable Integer topicId, HttpServletRequest request) {
-        request.setAttribute(Constants.COMMAND, userService.get(topicId));
+    @RequestMapping(value="/user/{id}/view", method = {RequestMethod.GET})
+    public String view(@PathVariable Integer id,Model model,  HttpServletRequest request) {
+    	 setCommonData(model,request);
+    	request.setAttribute(Constants.COMMAND, userService.get(id));
         return "user/view";
     }
 
@@ -193,7 +192,7 @@ public class UserController {
         return "redirect:/user/success";
     }
     
-    @RequestMapping(value = "/user/{id}/update", method = {RequestMethod.PUT})
+    @RequestMapping(value = "/user/{id}/update", method = {RequestMethod.POST})
     public String update(HttpServletRequest request,Model model, @ModelAttribute("command") @Valid UserModel command, BindingResult result) {
         if(result.hasErrors()) {
             model.addAttribute(Constants.COMMAND, command);

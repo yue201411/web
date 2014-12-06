@@ -20,7 +20,7 @@ public class UserHibernate4DaoImpl extends BaseHibernateDao<UserModel, Integer> 
     private static final String HQL_LIST = "from UserModel ";
     private static final String HQL_COUNT = "select count(*) from UserModel ";
 
-    private static final String HQL_LIST_QUERY_CONDITION = " where username like ?";
+    private static final String HQL_LIST_QUERY_CONDITION = " where username = ?";
     private static final String HQL_LIST_QUERY_ALL = HQL_LIST + HQL_LIST_QUERY_CONDITION + "order by id desc";
     private static final String HQL_COUNT_QUERY_ALL = HQL_COUNT + HQL_LIST_QUERY_CONDITION;
 
@@ -36,7 +36,8 @@ public class UserHibernate4DaoImpl extends BaseHibernateDao<UserModel, Integer> 
   
     private Object[] getQueryParam(UserQueryModel command) {
         //TODO 改成全文索引
-        String usernameLikeStr = "%" + command.getUsername() + "%";
+        String usernameLikeStr = command.getUsername() ;
+        System.out.println(usernameLikeStr);
         return new Object[]{
             usernameLikeStr
         };
@@ -44,12 +45,12 @@ public class UserHibernate4DaoImpl extends BaseHibernateDao<UserModel, Integer> 
 
 	@Override
 	public boolean checkUser(UserQueryModel command) {
-		List<UserModel> ulist= this.query(0,10, command);
+		List<UserModel> ulist= this.query(0,1, command);
 		
 		if (ulist==null){
 			return false;
 		}
-		UserModel pwd = (UserModel)ulist.get(0);
+		UserModel pwd = ulist.get(0);
 		
 		System.out.println(pwd.getPassword());
 		

@@ -28,7 +28,7 @@
 
     <!-- 开启controller注解支持 -->
     <!-- 注：如果base-package=com.imyueyue 则注解事务不起作用 TODO 读源码 -->
-    <context:component-scan base-package="com.imyueyue.demo.web.controller">
+    <context:component-scan base-package="com.imyueyue.admin.web.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

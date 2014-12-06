@@ -41,6 +41,8 @@
         <property name="cacheSeconds" value="60"/>
     </bean>
     
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+    
 
   	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
 		<property name="alias" value="proxoolDataSource"/>

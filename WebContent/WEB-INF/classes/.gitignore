@@ -1,0 +1,9 @@
+/cn/
+/com/
+/ehcache_hibernate.xml
+/log4j.properties
+/messages.properties
+/messages_zh_CN.properties
+/resources.properties
+/spring-config.xml
+/spring-servlet.xml

@@ -9,5 +9,8 @@ public class Constants {
     
     public static final String USERS = "users";
     
+    public static final String ACTIVE = "actives";
+    
+    
     
 }
