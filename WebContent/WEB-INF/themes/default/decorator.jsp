@@ -95,7 +95,7 @@
 							<li ${index}>
 								<a href="index.htm"><i class="icon-home"></i> <spring:message code="Admins.Dashboard" /></a>
 							</li>
-							<li>
+							<li ${projects}>
 								<a href="projects.htm"><i class="icon-folder-open"></i> <spring:message code="Admins.Projects" /></a>
 							</li>
 							<li>

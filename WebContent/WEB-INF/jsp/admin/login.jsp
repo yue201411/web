@@ -30,7 +30,7 @@
          <form:form method="POST" class="well">
                 <form:errors path="*" cssStyle="font-color:red"/>${errors}<br/>
                 <label for="username" ><spring:message code="users.UserName" />:</label>
-                <form:input path="userName" class="span2" /><br/>
+                <form:input path="username" class="span2" /><br/>
                 <label for="password" ><spring:message code="users.Password" />:</label>
                 <form:input path="password" class="span2" /><br/>
                 <label class="checkbox"> <input type="checkbox" /><spring:message code="users.Remember.me" /> </label>

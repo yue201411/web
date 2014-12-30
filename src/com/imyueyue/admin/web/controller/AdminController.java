@@ -52,13 +52,18 @@ public class AdminController {
 
     @RequestMapping(value="/login",method={RequestMethod.GET})
     public String login(HttpServletRequest request,Model model){
+    	 UsersModel u = (UsersModel)request.getSession().getAttribute(Constants.USERS);
     	 setCommonData(model,request);
-    	 model.addAttribute(Constants.USERS, new UsersModel());
-         if (model.asMap().get(Constants.USERS)!=null)
+    	 
+    	 if (u!=null)
          {
-        	 return "redirect:/admin/index";
-         }
+    		 model.addAttribute(Constants.COMMAND, u);
         	 
+    		 return "redirect:/admin/index";
+         }
+        
+    	 model.addAttribute(Constants.COMMAND, new UserModel());
+    	  
     	return "admin/login";  
     }
     
@@ -106,8 +111,12 @@ public class AdminController {
     @RequestMapping(value="/admin",method={RequestMethod.GET})
     public String admin(HttpServletRequest request,Model model){
     	 setCommonData(model,request);
-    	 model.addAttribute(Constants.USERS, new UsersModel());
-    	if (model.asMap().get(Constants.USERS)!=null)
+    	 System.out.println(model.asMap().get(Constants.USERS));
+    	
+    	 UsersModel u = (UsersModel)request.getSession().getAttribute(Constants.USERS);
+    	 model.addAttribute(Constants.USERS, u);
+    	 
+    	if (u.getUserName()!=null)
         {
     	    return "redirect:/admin/index";
         }
@@ -131,14 +140,13 @@ public class AdminController {
     
     @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
     public String list(HttpServletRequest request, Model model) {
-
-    	UsersModel u = (UsersModel)request.getSession().getAttribute(Constants.USERS);
-    	//System.out.println("session: "+u.getUsername());
     	
+    	UsersModel u = (UsersModel)request.getSession().getAttribute(Constants.USERS);
+        
         setCommonData(model,request);
-    
+    	
         model.addAttribute(Constants.USERS, u);
-
+        
         model.addAttribute("index", "class='active'");
         /*int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
         Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
@@ -173,7 +181,7 @@ public class AdminController {
         
         model.addAttribute(Constants.COMMAND, new ChannelsModel());
         
-        
+        model.addAttribute("projects", "class='active'");
 
         int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
         Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
@@ -206,6 +214,40 @@ public class AdminController {
         return "redirect:/admin/projects";
     }
     
+    @RequestMapping(value = "/admin/settings", method = {RequestMethod.GET})
+    public String settings(HttpServletRequest request, Model model) {
+
+    	UsersModel u = (UsersModel)request.getSession().getAttribute(Constants.USERS);
+    	//System.out.println("session: "+u.getUsername());
+    	
+        setCommonData(model,request);
+    
+        model.addAttribute(Constants.USERS, u);
+        
+        model.addAttribute(Constants.COMMAND, new ChannelsModel());
+        model.addAttribute("settings", "class='active'");
+        
+
+        int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
+        Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
+        boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre", false);
+        Page<ChannelsModel> page = null;
+        if(id > 0) {
+            if(pre) {
+                page = channelsService.pre(id, pn);
+            }
+            else {
+                page = channelsService.next(id, pn);
+            }
+        } 
+        else {
+            page = channelsService.listAll(pn);
+        }
+        request.setAttribute("page", page);
+     
+        return "admin/settings";
+    }
+    
     
     
     
@@ -213,7 +255,7 @@ public class AdminController {
     private void setCommonData(Model model,HttpServletRequest request) {
         //设置通用属性
     	 model.addAttribute(Constants.THEMES,themes); 
-         
+    	 
     }
 
     @InitBinder
