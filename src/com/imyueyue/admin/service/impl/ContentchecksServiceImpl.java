@@ -6,20 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.imyueyue.admin.dao.ContentchecksDao;
-import com.imyueyue.admin.model.ContentchecksModel;
-import com.imyueyue.admin.model.ContentchecksQueryModel;
-import com.imyueyue.admin.service.ContentchecksService;
 import com.imyueyue.common.dao.IBaseDao;
 import com.imyueyue.common.pagination.Page;
 import com.imyueyue.common.pagination.PageUtil;
 import com.imyueyue.common.service.impl.BaseService;
+import com.imyueyue.admin.dao.ContentchecksDao;
+import com.imyueyue.admin.model.ContentchecksModel;
+import com.imyueyue.admin.model.ContentchecksQueryModel;
+import com.imyueyue.admin.service.ContentchecksService;
 
 /*
   @abstract(DB TableName: contentchecks)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 21:56:29)
-  @cvs($Date: 2014/11/29 21:56:29 $)
+  @created(2014/12/7 21:29:20)
+  @cvs($Date: 2014/12/7 21:29:20 $)
 */ 
 
 @Service("ContentchecksService")

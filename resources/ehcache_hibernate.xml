@@ -28,6 +28,14 @@
       overflowToDisk="false">
     </cache>
 
+    <cache name="com.imyueyue.admin.model.UsersModel"
+      maxElementsInMemory="2000"
+      eternal="false"
+      timeToIdleSeconds="3600"
+      timeToLiveSeconds="3600"
+      overflowToDisk="false">
+    </cache>
+
 
     <cache
         name="org.hibernate.cache.StandardQueryCache"

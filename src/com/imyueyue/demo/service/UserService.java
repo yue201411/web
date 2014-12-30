@@ -14,5 +14,5 @@ public interface UserService extends IBaseService<UserModel, Integer> {
 
     Page<UserModel> query(int pn, int pageSize, UserQueryModel command);
     
-    boolean checkUser( UserQueryModel command);
+    boolean checkUser(UserQueryModel command);
 }

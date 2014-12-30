@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: contenttags_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,22 +26,36 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "contenttags")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ContenttagsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "TagID", nullable = false)
+    private int tagID;
+    
+    
+    private String tagName; //名称
     
     private int refCount; //使用次数
     private String description; //说明
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getTagID() {
+      return tagID;
+    }
+    
+    public void setTagID(int TagID){
+      this.tagID = TagID;
+    }
+    
+    
+    public String getTagName() {
+      return tagName;
+    }
+    
+    public void setTagName(String TagName){
+      this.tagName = TagName;
+    }
+    
     
     public int getRefCount() {
       return refCount;

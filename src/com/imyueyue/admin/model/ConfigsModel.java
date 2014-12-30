@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: configs_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,11 +26,12 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "configs")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ConfigsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "ConfigID", nullable = false)
+    private int configID;
+    
     
     private String contentPath; //部署路径
     private String dbLink; //数据库访问地址
@@ -56,14 +57,16 @@ public class ConfigsModel extends AbstractModel {
     private Date addTime; //创建日期
     private String editWho; //更新人
     private Date editTime; //更新日期
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getConfigID() {
+      return configID;
+    }
+    
+    public void setConfigID(int ConfigID){
+      this.configID = ConfigID;
+    }
+    
     
     public String getContentPath() {
       return contentPath;

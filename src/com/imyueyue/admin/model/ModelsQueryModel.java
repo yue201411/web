@@ -3,8 +3,8 @@
 /*
   @abstract(DB TableName: models)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
 
 @SuppressWarnings("serial")

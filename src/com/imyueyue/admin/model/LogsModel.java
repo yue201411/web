@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: logs_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,11 +26,12 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "logs")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class LogsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "LogID", nullable = false)
+    private String logID;
+    
     
     private String logCount; //日志内容
     private String udf1; //自定义1
@@ -43,14 +44,16 @@ public class LogsModel extends AbstractModel {
     private Date addTime; //创建日期
     private String editWho; //更新人
     private Date editTime; //更新日期
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public String getLogID() {
+      return logID;
+    }
+    
+    public void setLogID(String LogID){
+      this.logID = LogID;
+    }
+    
     
     public String getLogCount() {
       return logCount;

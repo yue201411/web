@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: rolepermissions_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:54)
-  @cvs($Date: 2014/11/29 22:01:54 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,20 +26,34 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "rolepermissions")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class RolepermissionsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "RoleID", nullable = false)
+    private int roleID;
     
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    private String url; //链接地址
+    
+        
+    
+    public int getRoleID() {
+      return roleID;
+    }
+    
+    public void setRoleID(int RoleID){
+      this.roleID = RoleID;
+    }
+    
+    
+    public String getUrl() {
+      return url;
+    }
+    
+    public void setUrl(String Url){
+      this.url = Url;
+    }
+    
     
    
 

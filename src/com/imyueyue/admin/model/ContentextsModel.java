@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: contentexts_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,11 +26,12 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "contentexts")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ContentextsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "ContentID", nullable = false)
+    private int contentID;
+    
     
     private String title; //标题
     private String shortTitle; //短标题
@@ -55,14 +56,16 @@ public class ContentextsModel extends AbstractModel {
     private Date addTime; //创建日期
     private String editWho; //更新人
     private Date editTime; //更新日期
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getContentID() {
+      return contentID;
+    }
+    
+    public void setContentID(int ContentID){
+      this.contentID = ContentID;
+    }
+    
     
     public String getTitle() {
       return title;

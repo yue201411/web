@@ -6,20 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.imyueyue.admin.dao.AdvattributesDao;
-import com.imyueyue.admin.model.AdvattributesModel;
-import com.imyueyue.admin.model.AdvattributesQueryModel;
-import com.imyueyue.admin.service.AdvattributesService;
 import com.imyueyue.common.dao.IBaseDao;
 import com.imyueyue.common.pagination.Page;
 import com.imyueyue.common.pagination.PageUtil;
 import com.imyueyue.common.service.impl.BaseService;
+import com.imyueyue.admin.dao.AdvattributesDao;
+import com.imyueyue.admin.model.AdvattributesModel;
+import com.imyueyue.admin.model.AdvattributesQueryModel;
+import com.imyueyue.admin.service.AdvattributesService;
 
 /*
   @abstract(DB TableName: advattributes)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 21:56:29)
-  @cvs($Date: 2014/11/29 21:56:29 $)
+  @created(2014/12/7 21:29:19)
+  @cvs($Date: 2014/12/7 21:29:19 $)
 */ 
 
 @Service("AdvattributesService")

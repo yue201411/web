@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: contentchecks_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,23 +26,26 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "contentchecks")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ContentchecksModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "ContentID", nullable = false)
+    private int contentID;
+    
     
     private int level; //审核级别
     private String status; //审核意见
     private int isRejected; //审核结果
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getContentID() {
+      return contentID;
+    }
+    
+    public void setContentID(int ContentID){
+      this.contentID = ContentID;
+    }
+    
     
     public int getLevel() {
       return level;

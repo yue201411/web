@@ -6,20 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.imyueyue.admin.dao.UsersDao;
-import com.imyueyue.admin.model.UsersModel;
-import com.imyueyue.admin.model.UsersQueryModel;
-import com.imyueyue.admin.service.UsersService;
 import com.imyueyue.common.dao.IBaseDao;
 import com.imyueyue.common.pagination.Page;
 import com.imyueyue.common.pagination.PageUtil;
 import com.imyueyue.common.service.impl.BaseService;
+import com.imyueyue.admin.dao.UsersDao;
+import com.imyueyue.admin.model.UsersModel;
+import com.imyueyue.admin.model.UsersQueryModel;
+import com.imyueyue.admin.service.UsersService;
 
 /*
   @abstract(DB TableName: users)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 21:56:30)
-  @cvs($Date: 2014/11/29 21:56:30 $)
+  @created(2014/12/7 21:29:20)
+  @cvs($Date: 2014/12/7 21:29:20 $)
 */ 
 
 @Service("UsersService")
@@ -36,6 +36,12 @@ public class UsersServiceImpl extends BaseService<UsersModel, Integer> implement
         this.baseDao = usersDao;
         this.usersDao = (UsersDao) usersDao;
     }
+    
+    @Override
+	public boolean checkUser(UsersQueryModel command) {
+		return usersDao.checkUser(command);
+	}
+
     
 
     @Override

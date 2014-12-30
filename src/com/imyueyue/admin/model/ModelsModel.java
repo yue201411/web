@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: models_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,11 +26,14 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "models")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ModelsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "ModeID", nullable = false)
+    private int modeID;
+    
+    
+    private String modelName; //模块名称
     
     private String modelPath; //模块路径
     private String channelPrefix; //栏目模板前缀
@@ -40,14 +43,25 @@ public class ModelsModel extends AbstractModel {
     private int priority; //排序
     private int isActive; //是否显示
     private String description; //说明
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getModeID() {
+      return modeID;
+    }
+    
+    public void setModeID(int ModeID){
+      this.modeID = ModeID;
+    }
+    
+    
+    public String getModelName() {
+      return modelName;
+    }
+    
+    public void setModelName(String ModelName){
+      this.modelName = ModelName;
+    }
+    
     
     public String getModelPath() {
       return modelPath;

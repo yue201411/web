@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: channelattrs_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:55)
+  @cvs($Date: 2014/12/7 23:52:55 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,22 +26,25 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "channelattrs")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ChannelattrsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "ChannelID", nullable = false)
+    private int channelID;
+    
     
     private String attrName; //属性名称
     private String attrValue; //属性值
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getChannelID() {
+      return channelID;
+    }
+    
+    public void setChannelID(int ChannelID){
+      this.channelID = ChannelID;
+    }
+    
     
     public String getAttrName() {
       return attrName;

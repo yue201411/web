@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.imyueyue.common.dao.hibernate4.BaseHibernateDao;
 import com.imyueyue.admin.dao.AdsspacesDao;
 import com.imyueyue.admin.model.AdsspacesModel;
 import com.imyueyue.admin.model.AdsspacesQueryModel;
-import com.imyueyue.common.dao.hibernate4.BaseHibernateDao;
 
 /*
   @abstract(DB TableName: adsspaces)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 21:56:28)
-  @cvs($Date: 2014/11/29 21:56:28 $)
+  @created(2014/12/7 22:11:14)
+  @cvs($Date: 2014/12/7 22:11:14 $)
 */ 
 
 @Repository("AdsspacesDao")

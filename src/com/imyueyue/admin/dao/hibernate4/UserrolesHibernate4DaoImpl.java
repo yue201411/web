@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.imyueyue.common.dao.hibernate4.BaseHibernateDao;
 import com.imyueyue.admin.dao.UserrolesDao;
 import com.imyueyue.admin.model.UserrolesModel;
 import com.imyueyue.admin.model.UserrolesQueryModel;
-import com.imyueyue.common.dao.hibernate4.BaseHibernateDao;
 
 /*
   @abstract(DB TableName: userroles)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 21:56:30)
-  @cvs($Date: 2014/11/29 21:56:30 $)
+  @created(2014/12/7 22:11:16)
+  @cvs($Date: 2014/12/7 22:11:16 $)
 */ 
 
 @Repository("UserrolesDao")

@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: roles_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:54)
-  @cvs($Date: 2014/11/29 22:01:54 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,23 +26,37 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "roles")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class RolesModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "RoleID", nullable = false)
+    private int roleID;
+    
+    
+    private int siteID; //站点ID
     
     private String roleName; //角色名称
     private int isActive; //是否显示
     private int priority; //排序
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getRoleID() {
+      return roleID;
+    }
+    
+    public void setRoleID(int RoleID){
+      this.roleID = RoleID;
+    }
+    
+    
+    public int getSiteID() {
+      return siteID;
+    }
+    
+    public void setSiteID(int SiteID){
+      this.siteID = SiteID;
+    }
+    
     
     public String getRoleName() {
       return roleName;

@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: advattributes_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:55)
+  @cvs($Date: 2014/12/7 23:52:55 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,22 +26,25 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "advattributes")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class AdvattributesModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "AdvID", nullable = false)
+    private int advID;
+    
     
     private String attrName; //属性名称
     private String attrValue; //属性值
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getAdvID() {
+      return advID;
+    }
+    
+    public void setAdvID(int AdvID){
+      this.advID = AdvID;
+    }
+    
     
     public String getAttrName() {
       return attrName;

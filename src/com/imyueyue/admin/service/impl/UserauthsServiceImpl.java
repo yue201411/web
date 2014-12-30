@@ -6,20 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.imyueyue.admin.dao.UserauthsDao;
-import com.imyueyue.admin.model.UserauthsModel;
-import com.imyueyue.admin.model.UserauthsQueryModel;
-import com.imyueyue.admin.service.UserauthsService;
 import com.imyueyue.common.dao.IBaseDao;
 import com.imyueyue.common.pagination.Page;
 import com.imyueyue.common.pagination.PageUtil;
 import com.imyueyue.common.service.impl.BaseService;
+import com.imyueyue.admin.dao.UserauthsDao;
+import com.imyueyue.admin.model.UserauthsModel;
+import com.imyueyue.admin.model.UserauthsQueryModel;
+import com.imyueyue.admin.service.UserauthsService;
 
 /*
   @abstract(DB TableName: userauths)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 21:56:30)
-  @cvs($Date: 2014/11/29 21:56:30 $)
+  @created(2014/12/7 21:29:20)
+  @cvs($Date: 2014/12/7 21:29:20 $)
 */ 
 
 @Service("UserauthsService")

@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: sites_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:54)
-  @cvs($Date: 2014/11/29 22:01:54 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,11 +26,12 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "sites")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class SitesModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "SiteID", nullable = false)
+    private int siteID;
+    
     
     private int configID; //设置ID
     private String domain; //域名
@@ -52,14 +53,16 @@ public class SitesModel extends AbstractModel {
     private Date addTime; //创建日期
     private String editWho; //更新人
     private Date editTime; //更新日期
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getSiteID() {
+      return siteID;
+    }
+    
+    public void setSiteID(int SiteID){
+      this.siteID = SiteID;
+    }
+    
     
     public int getConfigID() {
       return configID;

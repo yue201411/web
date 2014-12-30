@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: advertisings_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:55)
+  @cvs($Date: 2014/12/7 23:52:55 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,11 +26,16 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "advertisings")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class AdvertisingsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "AdvID", nullable = false)
+    private int advID;
+    
+    
+    private int advSpaceID; //广告排位ID
+    
+    private int siteID; //网站ID
     
     private String advName; //广告名称
     private String category; //广告类型
@@ -49,14 +54,34 @@ public class AdvertisingsModel extends AbstractModel {
     private Date addTime; //创建日期
     private String editWho; //更新人
     private Date editTime; //更新日期
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getAdvID() {
+      return advID;
+    }
+    
+    public void setAdvID(int AdvID){
+      this.advID = AdvID;
+    }
+    
+    
+    public int getAdvSpaceID() {
+      return advSpaceID;
+    }
+    
+    public void setAdvSpaceID(int AdvSpaceID){
+      this.advSpaceID = AdvSpaceID;
+    }
+    
+    
+    public int getSiteID() {
+      return siteID;
+    }
+    
+    public void setSiteID(int SiteID){
+      this.siteID = SiteID;
+    }
+    
     
     public String getAdvName() {
       return advName;

@@ -22,12 +22,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.imyueyue.admin.model.ChannelsModel;
+import com.imyueyue.admin.model.UsersModel;
+import com.imyueyue.admin.model.UsersQueryModel;
+import com.imyueyue.admin.service.ChannelsService;
+import com.imyueyue.admin.service.UsersService;
 import com.imyueyue.common.Constants;
 import com.imyueyue.common.pagination.Page;
 import com.imyueyue.common.web.support.editor.DateEditor;
 import com.imyueyue.demo.model.UserModel;
-import com.imyueyue.demo.model.UserQueryModel;
-import com.imyueyue.demo.service.UserService;
 
 
 @Controller
@@ -35,8 +38,12 @@ import com.imyueyue.demo.service.UserService;
 public class AdminController {
 
     @Autowired
-    @Qualifier("UserService")
-    private UserService userService;
+    @Qualifier("UsersService")
+    private UsersService usersService;
+    
+    @Autowired
+    @Qualifier("ChannelsService")
+    private ChannelsService channelsService;
     
     
     @Value("#{themes['themes.layout']}")
@@ -46,7 +53,7 @@ public class AdminController {
     @RequestMapping(value="/login",method={RequestMethod.GET})
     public String login(HttpServletRequest request,Model model){
     	 setCommonData(model,request);
-    	 model.addAttribute(Constants.COMMAND, new UserModel());
+    	 model.addAttribute(Constants.USERS, new UsersModel());
          if (model.asMap().get(Constants.USERS)!=null)
          {
         	 return "redirect:/admin/index";
@@ -61,11 +68,11 @@ public class AdminController {
       try {
 		String passwd= ServletRequestUtils.getStringParameter(request, "password");
 		
-		UserQueryModel u = new UserQueryModel();
-		u.setUsername(username);
+		UsersQueryModel u = new UsersQueryModel();
+		u.setUserName(username);
 		u.setPassword(passwd);
 		
-		if (userService.checkUser(u)) 
+		if (usersService.checkUser(u)) 
 		{
 	      model.addAttribute(Constants.USERS,u);	
 
@@ -97,25 +104,40 @@ public class AdminController {
     }
     
     @RequestMapping(value="/admin",method={RequestMethod.GET})
-    public String admin(HttpServletRequest request,Model model,HttpSession session){
-    	return "redirect:/admin/index";
+    public String admin(HttpServletRequest request,Model model){
+    	 setCommonData(model,request);
+    	 model.addAttribute(Constants.USERS, new UsersModel());
+    	if (model.asMap().get(Constants.USERS)!=null)
+        {
+    	    return "redirect:/admin/index";
+        }
+    
+    	return "admin/login";	
     }
     
     @RequestMapping(value="/admin/login",method={RequestMethod.GET})
-    public String adminlogin(HttpServletRequest request,Model model,HttpSession session){
-    	return "redirect:/admin/index";
+    public String adminlogin(HttpServletRequest request,Model model){
+    	 setCommonData(model,request);
+    	 model.addAttribute(Constants.USERS, new UsersModel());
+    	if (model.asMap().get(Constants.USERS)!=null)
+        {	
+    	   return "redirect:/admin/index";
+        }
+
+    	
+        return "admin/login";	
     }
     
     
     @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
     public String list(HttpServletRequest request, Model model) {
 
-    	UserModel u = (UserModel)request.getSession().getAttribute(Constants.USERS);
+    	UsersModel u = (UsersModel)request.getSession().getAttribute(Constants.USERS);
     	//System.out.println("session: "+u.getUsername());
     	
         setCommonData(model,request);
     
-        model.addAttribute(Constants.COMMAND, u);
+        model.addAttribute(Constants.USERS, u);
 
         model.addAttribute("index", "class='active'");
         /*int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
@@ -138,72 +160,50 @@ public class AdminController {
         return "admin/list";
     }
 
-    @RequestMapping(value = "/admin/{action}", method = {RequestMethod.GET})
-    public String settings(@PathVariable String action,HttpServletRequest request, Model model) {
+      
+    @RequestMapping(value = "/admin/projects", method = {RequestMethod.GET})
+    public String projects(HttpServletRequest request, Model model) {
 
-    	UserModel u = (UserModel)request.getSession().getAttribute(Constants.USERS);
+    	UsersModel u = (UsersModel)request.getSession().getAttribute(Constants.USERS);
     	//System.out.println("session: "+u.getUsername());
     	
         setCommonData(model,request);
     
-        model.addAttribute(Constants.COMMAND, u);
+        model.addAttribute(Constants.USERS, u);
         
-        model.addAttribute(action, "class='active'");
+        model.addAttribute(Constants.COMMAND, new ChannelsModel());
+        
+        
 
-        /*int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
+        int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
         Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
         boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre", false);
-        Page<UserModel> page = null;
+        Page<ChannelsModel> page = null;
         if(id > 0) {
             if(pre) {
-                page = userService.pre(id, pn);
+                page = channelsService.pre(id, pn);
             }
             else {
-                page = userService.next(id, pn);
+                page = channelsService.next(id, pn);
             }
         } 
         else {
-            page = userService.listAll(pn);
+            page = channelsService.listAll(pn);
         }
         request.setAttribute("page", page);
-        
-       */
-        
-        if (action=="login") return "admin/index";
-        if (action=="") return "admin/index";
-        		
-        
-        return "admin/"+ action;
+     
+        return "admin/projects";
     }
     
-    @RequestMapping(value = "/admin/top", method = {RequestMethod.GET})
-    public String settings(HttpServletRequest request, Model model) {
-
-    	UserModel u = (UserModel)request.getSession().getAttribute(Constants.USERS);
-    	//System.out.println("session: "+u.getUsername());
-    	
-        setCommonData(model,request);
-    
-        model.addAttribute(Constants.COMMAND, u);
-
-        /*int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
-        Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
-        boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre", false);
-        Page<UserModel> page = null;
-        if(id > 0) {
-            if(pre) {
-                page = userService.pre(id, pn);
-            }
-            else {
-                page = userService.next(id, pn);
-            }
-        } 
-        else {
-            page = userService.listAll(pn);
+    @RequestMapping(value = "/admin/projects", method = {RequestMethod.POST})
+    public String addProjects(HttpServletRequest request,Model model, @ModelAttribute("command") @Valid ChannelsModel command, BindingResult result) {
+        
+        if(result.hasErrors()) {
+            model.addAttribute(Constants.COMMAND, command);
+            return projects(request,model);
         }
-        request.setAttribute("page", page);
-       */
-        return "admin/top";
+        channelsService.save(command);
+        return "redirect:/admin/projects";
     }
     
     

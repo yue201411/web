@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -17,8 +18,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: channels_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,12 +27,21 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "channels")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ChannelsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "ChannelID", nullable = false)
+   
+    private int channelID;
     
+    
+    private int modelID; //模型ID
+    
+    private int siteID; //网站ID
+    
+    private int parentID; //父栏目ID
+   
+    @Pattern(regexp = "[A-Za-z0-9]{5,20}", message = "{username.illegal}")
     private String channelPath; //访问路径
     private int priority; //排列顺序
     private int isContent; //是否有内容
@@ -47,14 +57,43 @@ public class ChannelsModel extends AbstractModel {
     private Date addTime; //创建日期
     private String editWho; //更新人
     private Date editTime; //更新日期
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getChannelID() {
+      return channelID;
+    }
+    
+    public void setChannelID(int ChannelID){
+      this.channelID = ChannelID;
+    }
+    
+    
+    public int getModelID() {
+      return modelID;
+    }
+    
+    public void setModelID(int ModelID){
+      this.modelID = ModelID;
+    }
+    
+    
+    public int getSiteID() {
+      return siteID;
+    }
+    
+    public void setSiteID(int SiteID){
+      this.siteID = SiteID;
+    }
+    
+    
+    public int getParentID() {
+      return parentID;
+    }
+    
+    public void setParentID(int ParentID){
+      this.parentID = ParentID;
+    }
+    
     
     public String getChannelPath() {
       return channelPath;

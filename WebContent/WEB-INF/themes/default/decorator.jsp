@@ -39,7 +39,7 @@
 									<a href="<c:url value='/admin/settings' />"><spring:message code="Admins.Account.Settings" /></a>
 								</li>
 								<li>
-									<a href="help.htm">Help</a>
+									<a href="help.htm"><spring:message code="Admins.Help" /></a>
 								</li>
 								<li class="dropdown">
 									<a href="help.htm" class="dropdown-toggle" data-toggle="dropdown">Tours <b class="caret"></b></a>
@@ -75,7 +75,7 @@
 							</form>
 							<ul class="nav pull-right">
 								<li>
-									<a href="profile.htm">${command.getUsername()}</a>
+									<a href="profile.htm">${users.getUserName()}</a>
 								</li>
 								<li>
 									<a href="<c:url value='/logout' /> ">Logout</a>
@@ -93,46 +93,44 @@
 								<spring:message code="Admins.Menus" />
 							</li>
 							<li ${index}>
-								<a href="index.htm"><i class="icon-white icon-home"></i> <spring:message code="Admins.Dashboard" /></a>
+								<a href="index.htm"><i class="icon-home"></i> <spring:message code="Admins.Dashboard" /></a>
 							</li>
 							<li>
-								<a href="projects.htm"><i class="icon-folder-open"></i> Projects</a>
+								<a href="projects.htm"><i class="icon-folder-open"></i> <spring:message code="Admins.Projects" /></a>
 							</li>
 							<li>
-								<a href="tasks.htm"><i class="icon-check"></i> Tasks</a>
+								<a href="tasks.htm"><i class="icon-check"></i> <spring:message code="Admins.Tasks" /></a>
 							</li>
 							<li>
-								<a href="messages.htm"><i class="icon-envelope"></i> Messages</a>
+								<a href="messages.htm"><i class="icon-envelope"></i> <spring:message code="Admins.Messages" /></a>
 							</li>
 							<li>
-								<a href="files.htm"><i class="icon-file"></i> Files</a>
+								<a href="files.htm"><i class="icon-file"></i> <spring:message code="Admins.Files" /></a>
 							</li>
 							<li>
-								<a href="activity.htm"><i class="icon-list-alt"></i> Activity</a>
+								<a href="activity.htm"><i class="icon-list-alt"></i> <spring:message code="Admins.Activity" /></a>
 							</li>
 							<li class="nav-header">
-								Your Account
+								<spring:message code="Admins.Account" />
 							</li>
 							<li>
-								<a href="profile.htm"><i class="icon-user"></i> Profile</a>
+								<a href="profile.htm"><i class="icon-user"></i> <spring:message code="Admins.Account.Profile" /></a>
 							</li>
 							<li ${settings}>
-								<a href="settings.htm"><i class="icon-cog"></i> Settings</a>
+								<a href="settings.htm"><i class="icon-cog"></i> <spring:message code="Admins.Account.Settings" /></a>
 							</li>
 							<li class="divider">
 							</li>
 							<li>
-								<a href="help.htm"><i class="icon-info-sign"></i> Help</a>
+								<a href="help.htm"><i class="icon-info-sign"></i> <spring:message code="Admins.Help" /></a>
 							</li>
 							<li class="nav-header">
-								Bonus Templates
+								<spring:message code="Admins.Templates" />
 							</li>
 							<li>
-								<a href="gallery.htm"><i class="icon-picture"></i> Gallery</a>
+								<a href="gallery.htm"><i class="icon-picture"></i> <spring:message code="Admins.Gallery" /></a>
 							</li>
-							<li>
-								<a href="blank.htm"><i class="icon-stop"></i> Blank Slate</a>
-							</li>
+							
 						</ul>
 					</div>
 				</div>

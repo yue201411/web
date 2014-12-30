@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: users_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:54)
-  @cvs($Date: 2014/11/29 22:01:54 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,12 +26,18 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "users")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class UsersModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "UserID", nullable = false)
+    private int userID;
     
+    
+    private int groupID; //组ID
+    
+    private String userName; //用户名
+    
+    private String password; //
     private String email; //邮件地址
     private Date registerTime; //注册时间
     private String regIP; //注册IP地址
@@ -39,14 +45,42 @@ public class UsersModel extends AbstractModel {
     private int lgginCount; //登录次数
     private int isAdmin; //是否管理员
     private int isActive; //是否激活
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getUserID() {
+      return userID;
+    }
+    
+    public void setUserID(int UserID){
+      this.userID = UserID;
+    }
+    
+    
+    public int getGroupID() {
+      return groupID;
+    }
+    
+    public void setGroupID(int GroupID){
+      this.groupID = GroupID;
+    }
+    
+    
+    public String getUserName() {
+      return userName;
+    }
+    
+    public void setUserName(String UserName){
+      this.userName = UserName;
+    }
+    
+    
+    public String getPassword() {
+      return password;
+    }
+    
+    public void setPassword(String Password){
+      this.password = Password;
+    }
     
     public String getEmail() {
       return email;

@@ -11,8 +11,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.imyueyue.admin.model.UsersModel;
 import com.imyueyue.common.Constants;
-import com.imyueyue.demo.model.UserModel;
+
 
 /**
  * Servlet Filter implementation class LoginFilter
@@ -42,7 +43,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest hsq= (HttpServletRequest)request; 
 		HttpServletResponse rsp = (HttpServletResponse)response;
 		
-		UserModel user= (UserModel)hsq.getSession().getAttribute(Constants.USERS);
+		UsersModel user= (UsersModel)hsq.getSession().getAttribute(Constants.USERS);
 		
 		if (user==null){
 			rsp.sendRedirect(hsq.getContextPath()+"/login");

@@ -17,8 +17,8 @@ import com.imyueyue.common.model.AbstractModel;
 /*
   @abstract(DB TableName: contents_MODEL)
   @author(azhai <azhai2014@sina.com>)
-  @created(2014/11/29 22:01:53)
-  @cvs($Date: 2014/11/29 22:01:53 $)
+  @created(2014/12/7 23:52:56)
+  @cvs($Date: 2014/12/7 23:52:56 $)
 */ 
   
 @SuppressWarnings("serial")
@@ -26,11 +26,18 @@ import com.imyueyue.common.model.AbstractModel;
 @Table(name = "contents")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ContentsModel extends AbstractModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "ContentID", nullable = false)
+    private int contentID;
+    
+    
+    private int channelID; //栏目iD
+    
+    private int userID; //用户ID
+    
+    private int typeID; //类型ID
     
     private Date sortDate; //排序日期
     private int topLevel; //置顶级别
@@ -47,14 +54,43 @@ public class ContentsModel extends AbstractModel {
     private Date addTime; //创建日期
     private String editWho; //更新人
     private Date editTime; //更新日期
+        
     
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getContentID() {
+      return contentID;
+    }
+    
+    public void setContentID(int ContentID){
+      this.contentID = ContentID;
+    }
+    
+    
+    public int getChannelID() {
+      return channelID;
+    }
+    
+    public void setChannelID(int ChannelID){
+      this.channelID = ChannelID;
+    }
+    
+    
+    public int getUserID() {
+      return userID;
+    }
+    
+    public void setUserID(int UserID){
+      this.userID = UserID;
+    }
+    
+    
+    public int getTypeID() {
+      return typeID;
+    }
+    
+    public void setTypeID(int TypeID){
+      this.typeID = TypeID;
+    }
+    
     
     public Date getSortDate() {
       return sortDate;
